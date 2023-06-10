@@ -46,7 +46,13 @@ impl Astronaut {
             _ => {}
         };
 
-        println!("falloff: {}", falloff_linear(50.0, 80.0..120.0, 2.0, 0.5));
+        // Example for falloff_linear(), with input, range, and slope (m) when below or above range respectively:
+        // println!("falloff: {}", falloff_linear(50.0, 80.0..120.0, 2.0, 0.5));
+
+        // falloff_custom() works the same, except instead of passing in the slope of a linear
+        // function, you pass in a closure that will act as the math function to be used.
+        // l for lower, u for upper
+
         let heart_percent = falloff_custom(
             self.heartrate as f32,
             80.0..120.0,
@@ -58,6 +64,12 @@ impl Astronaut {
             100.0..120.0,
             |l| 0.5 * l.powi(2),
             |u| 0.5 * u.powi(2)
+            )
+            * falloff_custom(
+            self.blood_pressure.1 as f32,
+            100.0..120.0,
+            |l| 0.5 * l.powi(2),
+            |u| 0.5 * u.powi(2)
             );
         //TODO: finish calculating astronaut health based on all factors
         (heart_percent + bp_percent) / 2.0
@@ -66,6 +78,7 @@ impl Astronaut {
 
 // MATHEMATICAL FUNCTIONS
 
+#[allow(unused)]
 fn falloff_linear(input: f32, bound: Range<f32>, lower_slope: f32, upper_slope: f32) -> f32 {
     // slope is % per each 1 unit outside of range
     let multiplier: f32 = match input {
