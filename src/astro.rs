@@ -45,7 +45,6 @@ impl Astronaut {
             Deceased => return 0.0,
             _ => {}
         };
-        //TODO: calculate astronaut health based on all factors
 
         println!("falloff: {}", falloff_linear(50.0, 80.0..120.0, 2.0, 0.5));
         let heart_percent = falloff_custom(
@@ -60,6 +59,7 @@ impl Astronaut {
             |l| 0.5 * l.powi(2),
             |u| 0.5 * u.powi(2)
             );
+        //TODO: finish calculating astronaut health based on all factors
         (heart_percent + bp_percent) / 2.0
     }
 }
@@ -83,8 +83,6 @@ fn falloff_linear(input: f32, bound: Range<f32>, lower_slope: f32, upper_slope: 
 }
 
 fn falloff_custom<L,U>(input: f32, bound: Range<f32>, lower_func: L, upper_func: U) -> f32
-//T: std::cmp::PartialOrd + std::ops::Sub<Output= T> + std::ops::Mul<Output=T> + Into<f32>,
-// I tried :(
 where U: Fn(f32) -> f32, L: Fn(f32) -> f32 {
     // slope is % per each 1 unit outside of range
     let multiplier: f32 = match input {
