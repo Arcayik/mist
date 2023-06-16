@@ -1,0 +1,81 @@
+﻿Original writeup for Mist.
+if contributing add your name to the list.
+Note that all of this is subject to change and is only to serve as a guideline to the original vision.
+
+Medical Information Surveillance Tool (MIST)
+Blakely Haughton, Settia Cavan, Cesare Corazza, etal
+
+Abstract 
+        MIST is a piece of software supplementary to the EECOM software. It is used to track Astronaut vitals exclusively, and is designed in a manner that makes it readable to any Astronaut or Mission Control member, requiring no training to understand.
+
+Introduction
+MIST is a software that is supplementary to the EECOM software. It is used to monitor the overall wellbeing as well as the specific vitals of each astronaut. It uses a simple grid display, showing the six vitals for each of the six astronauts, as well as the radiation levels and a percent level for the overall health. This allows the medical officer to know the astronauts’ health at a glance, as well as understand exactly what the situation is when dealing with medical issues.
+Each crew of astronauts includes one medical officer, responsible for keeping up to date with both the crew’s beta and alpha health condition. Their responsibilities would include monitoring the MIST software, performing daily physical health evaluations, and administering beta medication and treatments. Secondary responsibilities may include meal preparation, organization and cleaning, and reinforcement of shifts.
+While the role of medic is not formally associated with a high rank, the medic does have the power to overrule a commander if they believe them to be compromised. They may also give orders to other astronauts if they believe it medically necessary. For example, if an astronaut is obviously suffering from fatigue and it is affecting their performance, the medic may order them to get some rest. 
+
+Display
+        MIST’s display is an 8 x 7 grid of numbers. The X axis is for vitals, reading H P R O T S ☢ %. The Y axis is for the Astronauts, and will read A B C D E F % or display the Astronauts’ call signs1. Each row displays the vitals for a single Astronaut. The display will be in the same font as all other OCESS software, in the colour green. If an Astronaut reaches the ‘Deadly’ range, the affected vital(s) will turn red.
+
+Vitals
+        H - Heart Rate
+                Unit: Beats per Minute
+                Healthy: 60-99 
+                Deadly: 10>500
+        P - Blood Pressure
+                Unit: Systolic/Diastolic
+                Healthy: 90/60-120/80
+                Deadly: 80/50>180/120
+        R - Respiration
+                Unit: Breaths per Minute
+                Healthy: 12-18
+                Deadly: 3>60
+        O - Oximetry (Blood Oxygen Level)
+                Unit: Percent of Blood Oxygen
+                Healthy: 95-100
+                Deadly: 60>175
+        T - Temperature
+                Unit: Degrees Celsius
+                Healthy: 36.5-37.3 
+                Deadly: 35>40
+        S - Skin Conductivity (Hydration)
+                Unit: Milliequivalents of Sodium
+                Healthy: 135-145
+                Deadly: 130>150
+        @ - Radiation Level
+                Unit: Microsieverts
+                Healthy: 0-500
+                Deadly: >5000
+        % - Overall Health
+                Unit: Percent 
+                Healthy: 75-100
+                Deadly: 25>
+
+Overall Health
+        Located at the end of each column, an Astronaut’s Overall Health is taken from the total of all vitals. Any vital that is within the ‘Healthy’ range has no effect on the reading. Once the vital is outside of this range, the overall health percentage will decrease. Having all vitals be somewhat below healthy will usually have the same effect as having one vital be significantly below healthy. Once any one vital reaches the ‘Deadly’ range, the overall health percentage will drop significantly, regardless of the state of the other vitals. Many vitals will have effects on the status of others, so a situation that starts with a single change can quickly become an across-the-board issue.
+
+
+Vital Average
+        Located at the bottom of each column, the crew’s Vital Average is taken from each Astronaut’s individual vital readings averaged with those of the others. This can be used to gain a better understanding of the situation in the Habitat, such as one Astronaut being an outlier, or the whole crew suffering from similar issues.
+
+
+Procedures
+        MIST is not able to be interacted with by Astronauts or MC, and as such the resolution of any issue presented by it must be solved physically. Astronauts are expected to have a basic understanding of First Aid procedures, with two crew members being designated as medics, with full training in Emergency and Standard First Aid. As a worst-case scenario, a gravely ill or wounded Astronaut may be placed in cryosleep, where over time their vitals will return to normal. If proper action is not taken fast enough, however, crew members may die if their vitals are too low for too long, or they sustain a drastic drop in vitals too fast.
+
+
+Simulator MIST
+
+F1        Astronaut A
+F2        Astronaut B
+F3        Astronaut C
+F4        Astronaut D
+F5        Astronaut E
+F6        Astronaut F
+
+1        Heart Rate
+2        Blood Pressure
+3        Respiration
+4        Oximetry
+5        Temperature
+6        Skin Conductivity
+7        Radiation
+
