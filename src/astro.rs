@@ -1,4 +1,3 @@
-use self::LifeState::*; //only need to type 'Awake' instead of 'LifeState::Awake'
 use crate::{Percentage, Celsius};
 use std::ops::Range;
 
@@ -22,6 +21,7 @@ pub enum LifeState {
     Cryo,
     Deceased,
 }
+use self::LifeState::*; // i.e. only need to type 'Awake' instead of 'LifeState::Awake'
 
 impl Default for Astronaut {
     fn default() -> Astronaut {
